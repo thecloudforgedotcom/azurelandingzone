@@ -16,5 +16,5 @@ jobs:
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-        template: ../core/platformdeploy/vnet.bicep
+        template: ../coreplatform/vnet.bicep
         failOnStdErr: false
