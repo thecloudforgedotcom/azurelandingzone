@@ -16,7 +16,7 @@ param location string = resourceGroup().location
 
 var storageAccountName = 'storage${uniqueString(resourceGroup().id)}'
 
-resource storageAccount 'Microsoft.Storage/storageAccounts@2025-06-01' = {
+resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
 //  scope: resourceSymbolicName or scope
 //  extendedLocation: {
 //    name: 'string'
