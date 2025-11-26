@@ -17,6 +17,7 @@ jobs:
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
+        scope: subscription
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         template: ./coreplatform/vnet.bicep
         parameters: ./coreplatform/vnet.parameters.bicep
