@@ -19,5 +19,5 @@ jobs:
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         template: ./coreplatform/vnet.bicep
-        template-file: deployVNet.Parameters.bicep
+        template-file: ./coreplatform/vnet.parameters.bicep
         failOnStdErr: false
