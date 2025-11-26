@@ -17,9 +17,8 @@ jobs:
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-        scope: subscription
-        region: uksouth
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
+        resourceGroupName: NetworkRG
         template: ./coreplatform/vnet.bicep
         parameters: ./coreplatform/vnet.parameters.bicep
         failOnStdErr: false
