@@ -1,4 +1,4 @@
-name: Deploy Bicep file
+name: Deploy Storage Bicep file
 on: 
   push:
     paths:
