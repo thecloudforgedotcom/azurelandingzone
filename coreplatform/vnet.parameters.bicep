@@ -2,13 +2,13 @@
   "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "virtualNetworkName" {
+    "virtualNetworkName": {
       "value": "test-vnet" 
     },
-    "subnet1Name" {
+    "subnet1Name": {
       "value": "Subnet-A"
     },
-    "subnet2Name" { 
+    "subnet2Name": { 
       "value": "Subnet-B"
     }
   }
