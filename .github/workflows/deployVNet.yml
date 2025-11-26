@@ -18,6 +18,6 @@ jobs:
       uses: azure/arm-deploy@v1
       with:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
-        resourceGroupName: NetworkRG
         template: ./coreplatform/vnet.bicep
+        template-file: deployVNet.Parameters.bicep
         failOnStdErr: false
