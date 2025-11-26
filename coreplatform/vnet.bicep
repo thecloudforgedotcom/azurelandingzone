@@ -1,7 +1,7 @@
 param location string = resourceGroup().location
-param virtualNetworkName = 'my-vnet'
-param subnet1Name = 'Subnet-1'
-param subnet2Name = 'Subnet-2'
+param virtualNetworkName string = 'my-vnet'
+param subnet1Name string = 'Subnet-1'
+param subnet2Name string = 'Subnet-2'
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: virtualNetworkName
