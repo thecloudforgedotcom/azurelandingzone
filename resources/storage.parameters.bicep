@@ -4,5 +4,8 @@
   "parameters": {
     "storageAccountType": {
       "value": "Standard_LRS" 
+    },
+    "storageAccountName": {
+      "value": "MyStorageCat11190" 
     }
 }
