@@ -1,4 +1,4 @@
-name: My Deploy VNet Bicep file
+name: Deploy VNet Bicep file
 on:
   workflow_dispatch
 jobs:
