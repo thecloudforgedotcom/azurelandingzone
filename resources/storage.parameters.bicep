@@ -8,4 +8,5 @@
     "storageAccountName": {
       "value": "MyStorageCat11190" 
     }
+  }
 }
