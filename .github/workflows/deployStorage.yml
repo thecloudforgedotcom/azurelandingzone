@@ -4,7 +4,8 @@ on:
     paths:
       - 'resources/storage.**'
 jobs:
-  build-and-deploy:
+  storage-build-and-deploy:
+    environment: Development
     runs-on: ubuntu-latest
     steps:
 
