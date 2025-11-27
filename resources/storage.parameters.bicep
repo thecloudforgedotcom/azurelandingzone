@@ -6,7 +6,7 @@
       "value": "Standard_LRS" 
     },
     "storageAccountName": {
-      "value": "MyStorageCat11190" 
+      "value": "mystoragecat11190" 
     }
   }
 }
