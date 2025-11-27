@@ -21,4 +21,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: StorageRG
         template: ./resources/storage.bicep
+        parameters: ./resources/storage.parameters.bicep        
         failOnStdErr: false
