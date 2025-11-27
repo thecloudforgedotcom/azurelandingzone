@@ -14,7 +14,7 @@ param storageAccountType string = 'Standard_LRS'
 @description('Location for all resources.')
 param location string = resourceGroup().location
 
-param storageAccountName = 'storage${uniqueString(resourceGroup().id)}'
+param storageAccountName string = 'storage${uniqueString(resourceGroup().id)}'
 
 resource storageAccount 'Microsoft.Storage/storageAccounts@2024-01-01' = {
 //  scope: resourceSymbolicName or scope
