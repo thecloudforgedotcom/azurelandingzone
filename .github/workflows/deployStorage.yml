@@ -1,8 +1,6 @@
 name: Deploy Storage Bicep file
-on: 
-  push:
-    paths:
-      - 'resources/storage.**'
+on:
+  workflow_dispatch
 jobs:
   storage-build-and-deploy:
     environment: Development
