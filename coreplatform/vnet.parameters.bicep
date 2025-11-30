@@ -12,13 +12,13 @@
       "value": "Subnet-B"
     },
     "vnetAddressSpace": {
-      "value": "10.0.0.0/16" 
+      "value": "10.19.0.0/16" 
     },
     "subnet1AddressSpace": {
-      "value": "10.0.1.0/24"
+      "value": "10.19.1.0/24"
     },
     "subnet2AddressSpace": { 
-      "value": "10.0.2.0/24"
+      "value": "10.19.2.0/24"
     }
   }
 }
