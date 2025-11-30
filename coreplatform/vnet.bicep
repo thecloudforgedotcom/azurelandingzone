@@ -2,6 +2,9 @@ param location string = resourceGroup().location
 param virtualNetworkName string = 'my-vnet'
 param subnet1Name string = 'Subnet-1'
 param subnet2Name string = 'Subnet-2'
+param vnetAddressSpace string = '10.0.0.0/16'
+param subnet1AddressSpace string = '10.0.1.0/24'
+param subnet2AddressSpace string = '10.0.2.0/24'
 
 resource virtualNetwork 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   name: virtualNetworkName
@@ -9,7 +12,7 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   properties: {
     addressSpace: {
       addressPrefixes: [
-        '10.0.0.0/16'
+        vnetAddressSpace
       ]
     }
   }
@@ -17,13 +20,13 @@ resource virtualNetwork 'Microsoft.Network/virtualNetworks@2024-05-01' = {
   resource subnet1 'subnets' = {
     name: subnet1Name
     properties: {
-      addressPrefix: '10.0.1.0/24'
+      addressPrefix: subnet1AddressSpace
     }  }
 
   resource subnet2 'subnets' = {
     name: subnet2Name
     properties: {
-      addressPrefix: '10.0.2.0/24'
+      addressPrefix: subnet2AddressSpace
     }    
   }
 }
