@@ -31,7 +31,7 @@ var localVnetId  = resourceId(localSubscriptionId, localResourceGroup, 'Microsof
 var remoteVnetId = resourceId(remoteSubscriptionId, remoteResourceGroup, 'Microsoft.Network/virtualNetworks', remoteVnetName)
 
 // Deploy peering LOCAL -> REMOTE at the LOCAL RG scope
-module localPeering 'peer.bicep' = {
+module localPeering 'connectivityvnetpeering.modules.bicep' = {
   name: 'local-to-remote-peering'
   scope: resourceGroup(localSubscriptionId, localResourceGroup)
   params: {
@@ -46,7 +46,7 @@ module localPeering 'peer.bicep' = {
 }
 
 // Deploy peering REMOTE -> LOCAL at the REMOTE RG scope
-module remotePeering 'peer.bicep' = {
+module remotePeering 'connectivityvnetpeering.modules.bicep' = {
   name: 'remote-to-local-peering'
   scope: resourceGroup(remoteSubscriptionId, remoteResourceGroup)
   params: {
