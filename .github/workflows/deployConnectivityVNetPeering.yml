@@ -18,7 +18,6 @@ jobs:
     - name: Deploy Bicep file
       uses: azure/arm-deploy@v1
       with:
-        subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION }}
         resourceGroupName: Network
         template: ./coreplatform/connectivityvnetpeering.bicep
         parameters: ./coreplatform/connectivityvnetpeering.parameters.bicep
