@@ -21,10 +21,10 @@
       "value": "test-vnet"
     },    
     "localPeeringName": {
-      "value": 'peer-to-${remoteVnetName}' 
+      "value": "peer-to-remoteVnetName" 
     },
     "remotePeeringName": {
-      "value": 'peer-to-${localVnetName}'
+      "value": "peer-to-localVnetName"
     },
     "allowVirtualNetworkAccess": { 
       "value": true
