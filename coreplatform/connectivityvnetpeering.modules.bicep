@@ -30,10 +30,11 @@ resource peering 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-
     remoteVirtualNetwork: {
       id: remoteVnetId
     }
-       allowVirtualNetworkAccess: allowVirtualNetworkAccess
+    allowVirtualNetworkAccess: allowVirtualNetworkAccess
     allowForwardedTraffic: allowForwardedTraffic
     allowGatewayTransit: allowGatewayTransit
     useRemoteGateways: useRemoteGateways
   }
+  output peeringId string = peering.id
 }
 
