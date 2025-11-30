@@ -1,3 +1,5 @@
+targetScope = 'subscription'
+
 @description('Subscription ID of the LOCAL VNet')
 param localSubscriptionId string
 
