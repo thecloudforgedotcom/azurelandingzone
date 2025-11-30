@@ -1,68 +1,43 @@
-
 targetScope = 'subscription'
 
-@description('Subscription ID of the LOCAL VNet')
+@description('Subscription ID of LOCAL VNet')
 param localSubscriptionId string
-
-@description('Resource group name of the LOCAL VNet')
+@description('Resource group name of LOCAL VNet')
 param localResourceGroup string
-
-@description('Name of the LOCAL VNet')
+@description('Name of LOCAL VNet')
 param localVnetName string
 
-@description('Subscription ID of the REMOTE VNet')
+@description('Subscription ID of REMOTE VNet')
 param remoteSubscriptionId string
-
-@description('Resource group name of the REMOTE VNet')
+@description('Resource group name of REMOTE VNet')
 param remoteResourceGroup string
-
-@description('Name of the REMOTE VNet')
+@description('Name of REMOTE VNet')
 param remoteVnetName string
 
-@description('Peering name to create on the LOCAL VNet')
+@description('Peering names')
 param localPeeringName string = 'peer-to-${remoteVnetName}'
-
-@description('Peering name to create on the REMOTE VNet')
 param remotePeeringName string = 'peer-to-${localVnetName}'
 
-@description('Enable VNet‑to‑VNet traffic (usually true)')
+@description('Flags')
 param allowVirtualNetworkAccess bool = true
-
-@description('Allow forwarded traffic across the peering')
 param allowForwardedTraffic bool = false
-
-@description('Allow gateway transit from the LOCAL to REMOTE (if local VNet has a VPN/ER gateway to share)')
 param allowGatewayTransitOnLocal bool = false
-
-@description('Allow gateway transit from the REMOTE to LOCAL (if remote VNet has a VPN/ER gateway to share)')
 param allowGatewayTransitOnRemote bool = false
-
-@description('Use remote gateways on the LOCAL VNet (set true only if REMOTE side has allowGatewayTransitOnRemote=true)')
 param useRemoteGatewaysOnLocal bool = false
-
-@description('Use remote gateways on the REMOTE VNet (set true only if LOCAL side has allowGatewayTransitOnLocal=true)')
 param useRemoteGatewaysOnRemote bool = false
 
-// ---- Cross-scope references to existing VNets ----
-resource localVnet 'Microsoft.Network/virtualNetworks@2024-05-01' existing = {
-  name: localVnetName
+// Build VNet IDs once and pass into modules
+var localVnetId  = resourceId(localSubscriptionId, localResourceGroup, 'Microsoft.Network/virtualNetworks', localVnetName)
+var remoteVnetId = resourceId(remoteSubscriptionId, remoteResourceGroup, 'Microsoft.Network/virtualNetworks', remoteVnetName)
+
+// Deploy peering LOCAL -> REMOTE at the LOCAL RG scope
+module localPeering 'peer.bicep' = {
+  name: 'local-to-remote-peering'
   scope: resourceGroup(localSubscriptionId, localResourceGroup)
-}
-
-resource remoteVnet 'Microsoft.Network/virtualNetworks@2024-05-01' existing = {
-  name: remoteVnetName
-  scope: resourceGroup(remoteSubscriptionId, remoteResourceGroup)
-}
-
-// ---- LOCAL -> REMOTE peering (child resource of LOCAL VNet) ----
-// NOTE: child resources must use `parent:` and must NOT have `scope:`
-resource localToRemote 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-05-01' = {
-  name: localPeeringName           // child name ONLY
-  parent: localVnet                // attach to parent VNet; no `scope` here
-  properties: {
-    remoteVirtualNetwork: {
-      id: remoteVnet.id
-    }
+  params: {
+    myVnetName: localVnetName
+    remoteVnetId: remoteVnetId
+    peeringName: localPeeringName
     allowVirtualNetworkAccess: allowVirtualNetworkAccess
     allowForwardedTraffic: allowForwardedTraffic
     allowGatewayTransit: allowGatewayTransitOnLocal
@@ -70,20 +45,19 @@ resource localToRemote 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings
   }
 }
 
-// ---- REMOTE -> LOCAL peering (child resource of REMOTE VNet) ----
-resource remoteToLocal 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-05-01' = {
-  name: remotePeeringName
-  parent: remoteVnet
-  properties: {
-    remoteVirtualNetwork: {
-      id: localVnet.id
-    }
+// Deploy peering REMOTE -> LOCAL at the REMOTE RG scope
+module remotePeering 'peer.bicep' = {
+  name: 'remote-to-local-peering'
+  scope: resourceGroup(remoteSubscriptionId, remoteResourceGroup)
+  params: {
+    myVnetName: remoteVnetName
+    remoteVnetId: localVnetId
+    peeringName: remotePeeringName
     allowVirtualNetworkAccess: allowVirtualNetworkAccess
     allowForwardedTraffic: allowForwardedTraffic
-       allowGatewayTransit: allowGatewayTransitOnRemote
-    useRemoteGateways: useRemoteGatewaysOnRemote
+    allowGatewayTransit: allowGatewayTransitOnRemote
+    useRemoteGate    useRemoteGateways: useRemoteGatewaysOnRemote
   }
 }
 
-// ---- Helpful outputs ----
-output localPeeringId string = localToRemote.id
+output localPeeringId string = localPeering.outputs.peeringId
