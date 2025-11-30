@@ -35,6 +35,6 @@ resource peering 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-
     allowGatewayTransit: allowGatewayTransit
     useRemoteGateways: useRemoteGateways
   }
-  output peeringId string = peering.id
 }
 
+output peeringId
