@@ -41,14 +41,14 @@ param useRemoteGatewaysOnLocal bool = false
 param useRemoteGatewaysOnRemote bool = false
 
 // ---- Safety checks ----
-var bothUseRemoteGateways = useRemoteGatewaysOnLocal && useRemoteGatewaysOnRemote
-var bothAllowGatewayTransit = allowGatewayTransitOnLocal && allowGatewayTransitOnRemote
+//var bothUseRemoteGateways = useRemoteGatewaysOnLocal && useRemoteGatewaysOnRemote
+//var bothAllowGatewayTransit = allowGatewayTransitOnLocal && allowGatewayTransitOnRemote
 
-@allowed([ false ])
-param _blockBothRemoteGatewayUse bool = bothUseRemoteGateways
+//@allowed([ false ])
+//param _blockBothRemoteGatewayUse bool = bothUseRemoteGateways
 
-@allowed([ false ])
-param _blockBothTransit bool = bothAllowGatewayTransit
+//@allowed([ false ])
+//param _blockBothTransit bool = bothAllowGatewayTransit
 
 // ---- Cross-scope references to existing VNets ----
 resource localVnet 'Microsoft.Network/virtualNetworks@2024-05-01' existing = {
