@@ -56,7 +56,7 @@ module remotePeering 'connectivityvnetpeering.modules.bicep' = {
     allowVirtualNetworkAccess: allowVirtualNetworkAccess
     allowForwardedTraffic: allowForwardedTraffic
     allowGatewayTransit: allowGatewayTransitOnRemote
-    useRemoteGate    useRemoteGateways: useRemoteGatewaysOnRemote
+    useRemoteGateways: useRemoteGatewaysOnRemote
   }
 }
 
