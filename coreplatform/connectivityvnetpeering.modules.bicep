@@ -37,4 +37,4 @@ resource peering 'Microsoft.Network/virtualNetworks/virtualNetworkPeerings@2024-
   }
 }
 
-output peeringId
+output peeringId string = peering.id
