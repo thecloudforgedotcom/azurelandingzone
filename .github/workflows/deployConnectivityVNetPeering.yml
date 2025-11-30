@@ -20,6 +20,7 @@ jobs:
       with:
         scope: subscription
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        region: uksouth
         template: ./coreplatform/connectivityvnetpeering.bicep
         parameters: ./coreplatform/connectivityvnetpeering.parameters.bicep
         failOnStdErr: false
