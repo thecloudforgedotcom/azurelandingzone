@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "localSubscriptionId": {
-      "value": "88733ed8-40ea-48b0-a7f3-34bd815c626f" 
+      "value": "67676767-3434-1212-3434-121212121212" 
     },
     "localResourceGroup": {
       "value": "Network"
@@ -12,7 +12,7 @@
       "value": "Connectivity-VNet"
     },
     "remoteSubscriptionId": {
-      "value": "251e7659-d020-475e-8e12-cd873ed2596b" 
+      "value": "67676767-3434-1212-3434-121212121212" 
     },
     "remoteResourceGroup": {
       "value": "NetworkRG"
