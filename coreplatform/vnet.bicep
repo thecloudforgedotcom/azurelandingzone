@@ -4,7 +4,7 @@ param subnet1Name string = 'Subnet-1'
 param subnet2Name string = 'Subnet-2'
 
 @description('Resource ID of an existing IPAM pool')
-param existingIpamPoolId string = '/subscriptions/88733ed8-40ea-48b0-a7f3-34bd815c626f/resourceGroups/networkmanager/providers/Microsoft.Network/networkManagers/ConnectivityNetworkManager/ipamPools/ipampool'
+param existingIpamPoolId string = '/subscriptions/67676767-3434-1212-3434-121212121212/resourceGroups/networkmanager/providers/Microsoft.Network/networkManagers/ConnectivityNetworkManager/ipamPools/ipampool'
 
 @description('Number of IP addresses for virtual network')
 param vnetNumberOfIpAddresses string = '65536'
