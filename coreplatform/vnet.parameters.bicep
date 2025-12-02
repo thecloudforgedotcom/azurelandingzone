@@ -3,7 +3,7 @@
   "contentVersion": "1.0.0.0",
   "parameters": {
     "virtualNetworkName": {
-      "value": "test-vnet" 
+      "value": "other-test-vnet" 
     },
     "subnet1Name": {
       "value": "Subnet-A"
