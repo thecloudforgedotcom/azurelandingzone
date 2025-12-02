@@ -3,7 +3,7 @@ on:
   workflow_dispatch
 jobs:
   vnet-build-and-deploy:
-    environment: Shared Platform
+    environment: Development
     runs-on: ubuntu-latest
     steps:
 
