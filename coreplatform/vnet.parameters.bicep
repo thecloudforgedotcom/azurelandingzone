@@ -11,14 +11,14 @@
     "subnet2Name": { 
       "value": "Subnet-B"
     },
-    "vnetAddressSpace": {
-      "value": "10.19.0.0/16" 
+    "existingIpamPoolId": {
+      "value": "/subscriptions/88733ed8-40ea-48b0-a7f3-34bd815c626f/resourceGroups/networkmanager/providers/Microsoft.Network/networkManagers/ConnectivityNetworkManager/ipamPools/ipampool" 
     },
-    "subnet1AddressSpace": {
-      "value": "10.19.1.0/24"
+    "vnetNumberOfIpAddresses": {
+      "value": "65536"
     },
-    "subnet2AddressSpace": { 
-      "value": "10.19.2.0/24"
+    "subnetNumberOfIpAddresses": { 
+      "value": "256"
     }
   }
 }
