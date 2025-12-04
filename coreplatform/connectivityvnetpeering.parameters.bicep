@@ -18,7 +18,7 @@
       "value": "NetworkRG"
     },
     "remoteVnetName": { 
-      "value": "test-vnet"
+      "value": "other-test-vnet"
     },    
     "localPeeringName": {
       "value": "peer-to-remoteVnetName" 
