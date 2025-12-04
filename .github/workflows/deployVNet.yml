@@ -20,5 +20,5 @@ jobs:
       with:
         resourceGroupName: NetworkRG
         template: ./coreplatform/vnet.bicep
-        parameters: ./coreplatform/vnet.parameters.bicep existingIpamPoolId=${{env.IPAM_POOL_ID}}
+        parameters: ./coreplatform/vnet.parameters.bicep existingIpamPoolId=${{secrets.IPAM_POOL_ID}}
         failOnStdErr: false
