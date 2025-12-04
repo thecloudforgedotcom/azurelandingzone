@@ -22,5 +22,5 @@ jobs:
         subscriptionId: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
         region: uksouth
         template: ./coreplatform/connectivityvnetpeering.bicep
-        parameters: ./coreplatform/connectivityvnetpeering.parameters.bicep localSubscriptionId=${{env.SUBSCRIPTION_ID}} remoteSubscriptionId=${{env.SPOKE10_SUBSCRIPTION_ID}}
+        parameters: ./coreplatform/connectivityvnetpeering.parameters.bicep localSubscriptionId=${{secrets.SUBSCRIPTION_ID}} remoteSubscriptionId=${{secrets.SPOKE10_SUBSCRIPTION_ID}}
         failOnStdErr: false
